@@ -51,14 +51,28 @@ $(function () {
     $('button#Equals').on("click", function () {
         console.log($('#ResultPane').val());
         if (resultHolder != "") {
-            var add1 = resultHolder.indexOf('+');
-            var num1 = parseInt(resultHolder.substr(0, (add1)));
-            var num2 = parseInt(resultHolder.substr((add1 + 1)));
-            var finalNum = num1 + num2;
 
-            resultHolder = finalNum;
-            $('#ResultPane').val(resultHolder);
-            resultNum = true;
+            resultHolder = resultHolder.toString();
+
+            var arrayAdditionHolder = resultHolder.split('+');
+            console.log(arrayAdditionHolder);
+            if (resultHolder.indexOf('+') != -1 && arrayAdditionHolder.length >= 2) {
+
+                for (var i = 0, finalNum = 0; i < arrayAdditionHolder.length; i++) {
+                    if (arrayAdditionHolder[i] != "") {
+                        finalNum += parseFloat(arrayAdditionHolder[i]);
+                    } else {
+                        console.log("empty string alert!");
+                    }
+                }
+
+                resultHolder = finalNum;
+                $('#ResultPane').val(resultHolder);
+                resultNum = true;
+
+            } else {
+                console.log("none of thee above");
+            }
 
         } else {
             console.log("resultHolder is empty!");
@@ -70,40 +84,64 @@ $(function () {
     $('#ResultPane').on("keypress", function (event) {
 
         var resultHolderLength;
-
+        resultHolder = $('#ResultPane').val();
+        
+        //enter key
         if (event.which == 13) {
+            
             if (resultHolder != "") {
-                var add1 = resultHolder.indexOf('+');
-                var num1 = parseInt(resultHolder.substr(0, (add1)));
-                var num2 = parseInt(resultHolder.substr((add1 + 1)));
-                var finalNum = num1 + num2;
 
-                resultHolder = finalNum;
-                $('#ResultPane').val(resultHolder);
-                resultNum = true;
+                console.log(resultHolder);
+                resultHolder = resultHolder.toString();
+
+                var arrayAdditionHolder = resultHolder.split('+');
+                console.log(arrayAdditionHolder);
+                if (resultHolder.indexOf('+') != -1 && arrayAdditionHolder.length >= 2) {
+
+                    for (var i = 0, finalNum = 0; i < arrayAdditionHolder.length; i++) {
+                        if (arrayAdditionHolder[i] != "") {
+                            finalNum += parseFloat(arrayAdditionHolder[i]);
+                        } else {
+                            console.log("empty string alert!");
+                        }
+                    }
+
+                    resultHolder = finalNum;
+                    console.log(resultHolder);
+                    $('#ResultPane').val(resultHolder);
+                    resultNum = true;
+
+                } else {
+                    console.log("none of thee above");
+                }
+
             } else {
                 console.log("resultHolder is empty!");
             }
 
+
+           //backspace key
         } else if (event.which == 8) {
             if (resultHolder != "") {
-                console.log("backspace key hit");
-                console.log(resultHolder);
                 resultHolder = resultHolder.toString();
-                resultHolderLength = resultHolder.length;
-                console.log(resultHolderLength);
+                var resultHolderLength = resultHolder.length;
                 resultHolder = resultHolder.substring(resultHolderLength - 1, 0);
-                //$('#ResultPane').val(resultHolder);
-                console.log(resultHolder);
                 resultNum = false;
+            } else {
+                console.log("resultHolder is empty!");
             }
         } else {
+            //add key or if the final result hasn't been reached yet
             if (event.which == 107 || !resultNum) {
-                console.log(event);
+                //console.log(event);
+                //resultHolder = $('#ResultPane').val();
+                console.log(resultHolder);
+
                 valueHolder = event.key;
                 resultHolder += valueHolder;
-                //$('#ResultPane').val(resultHolder);
                 resultNum = false;
+                console.log(resultHolder);
+                console.log("enter key pressed or result hasn't been reached");
             } else {
                 valueHolder = event.key;
                 resultHolder = ("" + valueHolder);
@@ -111,13 +149,7 @@ $(function () {
             }
         } 
 
-
     });
-
-});
-
-$(window).load(function() 
-{
 
 });
 

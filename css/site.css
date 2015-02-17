@@ -16,8 +16,6 @@ body {
 .calculator {
     width: 328px;
     height: auto;
-    /*padding: 14px;*/
-    
     margin: 80px auto 30px auto;
     box-sizing: border-box;
     border-radius: 8px;
@@ -25,10 +23,6 @@ body {
     -webkit-box-shadow: 0px 1px 14px 0px rgba(0, 0, 0, 0.53);
     -moz-box-shadow:    0px 1px 14px 0px rgba(0, 0, 0, 0.53);
     box-shadow:         0px 1px 14px 0px rgba(0, 0, 0, 0.53);
-    /*-webkit-box-shadow: inset 0px 1px 7px 0px rgba(0, 0, 0, 0.10);
-    -moz-box-shadow:    inset 0px 1px 7px 0px rgba(0, 0, 0, 0.10);
-    box-shadow:         inset 0px 1px 7px 0px rgba(0, 0, 0, 0.10);*/
-
     border: 1px solid #ebebeb;
 }
 
@@ -132,18 +126,23 @@ button.operators {
 }
 
 button#Equals.operators {
-    background: #fff293;
-    background: -moz-linear-gradient(top,  #fff293 0%, #ffe75a 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fff293), color-stop(100%,#ffe75a));
-    background: -webkit-linear-gradient(top,  #fff293 0%,#ffe75a 100%);
-    background: -o-linear-gradient(top,  #fff293 0%,#ffe75a 100%);
-    background: -ms-linear-gradient(top,  #fff293 0%,#ffe75a 100%);
-    background: linear-gradient(to bottom,  #fff293 0%,#ffe75a 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff293', endColorstr='#ffe75a',GradientType=0 );
-    border: 1px solid #ffe75a;
+    background: #fed71f; /* Old browsers */
+background: -moz-linear-gradient(top,  #fed71f 0%, #ffb72b 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fed71f), color-stop(100%,#ffb72b)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #fed71f 0%,#ffb72b 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #fed71f 0%,#ffb72b 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #fed71f 0%,#ffb72b 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #fed71f 0%,#ffb72b 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fed71f', endColorstr='#ffb72b',GradientType=0 ); /* IE6-9 */
+
+    border: 1px solid #ffb31f;
     -webkit-box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.43);
     -moz-box-shadow:    inset 0px 1px 0px 0px rgba(255, 255, 255, 0.43);
     box-shadow:         inset 0px 1px 0px 0px rgba(255, 255, 255, 0.43);
+}
+
+button.disabled {
+    opacity:0.2;
 }
 
 /*button.operators {
